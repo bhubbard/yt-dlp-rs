@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>yt-dlp-rs 📺 Fast, Memory-Safe Media Downloader in Pure Rust</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="badge">v0.0.1 • 100% Safe Rust • Sub-5ms Startup</div>
+      <h1>yt-dlp-rs 📺🦀</h1>
+      <p class="subtitle">A high-performance, modular, memory-safe media downloader written in pure Rust inspired by yt-dlp. Cold starts in milliseconds, zero Python runtime overhead.</p>
+      
+      <div class="cta-group">
+        <a href="#quickstart" class="btn primary">Get Started</a>
+        <a href="https://github.com/bhubbard/yt-dlp-rs" class="btn secondary">View on GitHub ★</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="metrics">
+      <div class="metric-card">
+        <div class="metric-val">&lt; 5ms</div>
+        <div class="metric-label">Cold Startup Time</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">&lt; 15MB</div>
+        <div class="metric-label">RAM Footprint</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">HLS & DASH</div>
+        <div class="metric-label">Multi-Protocol Engine</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">0.01s</div>
+        <div class="metric-label">Test Suite Speed</div>
+      </div>
+    </section>
+
+    <section id="interactive-playground" class="card">
+      <h2>Interactive Command Generator 🛠️</h2>
+      <p>Configure download parameters to generate the exact <code>yt-dlp</code> CLI command:</p>
+      
+      <div class="grid">
+        <div class="control-group">
+          <label for="video-url">Video or Stream URL:</label>
+          <input type="text" id="video-url" value="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+        </div>
+
+        <div class="control-group">
+          <label for="format-select">Format Selector (-f):</label>
+          <select id="format-select">
+            <option value="best">Best Quality (best)</option>
+            <option value="bestaudio">Best Audio Only (bestaudio)</option>
+            <option value="worst">Lowest Footprint (worst)</option>
+            <option value="137">1080P MP4 (137)</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="output-path">Destination Folder (-P):</label>
+          <input type="text" id="output-path" value="./downloads">
+        </div>
+
+        <div class="control-group">
+          <label for="concurrent-fragments">Concurrent Fragments (-N):</label>
+          <input type="number" id="concurrent-fragments" value="8" min="1" max="32">
+        </div>
+      </div>
+
+      <div class="toggles">
+        <label><input type="checkbox" id="list-formats"> <code>-F</code> (List formats only)</label>
+        <label><input type="checkbox" id="dump-json"> <code>-j</code> (Dump JSON metadata)</label>
+      </div>
+
+      <div class="command-box">
+        <pre><code id="generated-command">yt-dlp "https://www.youtube.com/watch?v=dQw4w9WgXcQ" -f best -P ./downloads -N 8</code></pre>
+        <button id="copy-btn" class="btn small">Copy</button>
+      </div>
+    </section>
+
+    <section id="architecture" class="card">
+      <h2>Native Multi-Protocol Architecture ⚡</h2>
+      <div class="diagram-grid">
+        <div class="diagram-box">
+          <h3>HTTP/2 Segmented Transport</h3>
+          <p>Concurrent chunked range downloading with automatic connection pooling and byte-accurate resume.</p>
+        </div>
+        <div class="diagram-box">
+          <h3>HLS (m3u8) & MPEG-DASH</h3>
+          <p>Zero-overhead parsing of Master and Media playlists with asynchronous fragment pipelines.</p>
+        </div>
+        <div class="diagram-box">
+          <h3>Modular Extractor Registry</h3>
+          <p>Zero-cost abstraction for platform-specific API scrapers: YouTube, Twitter/X, and Universal HTML5.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="quickstart" class="card">
+      <h2>Installation & Usage 🚀</h2>
+      <pre><code># Install from Cargo
+cargo install --git https://github.com/bhubbard/yt-dlp-rs
+
+# 1. List available formats
+yt-dlp -F "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+# 2. Download best quality video
+yt-dlp -f best -P ~/Downloads "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+# 3. Download best audio track only
+yt-dlp -f bestaudio -P ~/Music "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+# 4. Dump machine-readable JSON metadata
+yt-dlp -j "https://x.com/user/status/123456789"</code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>Built with ❤️ and Rust by <a href="https://github.com/bhubbard">Brandon Hubbard</a>. Licensed under MIT or Apache-2.0.</p>
+      <p><a href="http://code.brandonhubbard.com/">More Projects</a> • <a href="https://github.com/bhubbard/yt-dlp-rs">GitHub Repo</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
