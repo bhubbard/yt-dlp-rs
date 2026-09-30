@@ -33,6 +33,7 @@ impl Default for DownloadOptions {
     }
 }
 
+#[derive(Debug, Clone)]
 pub struct Downloader {
     options: DownloadOptions,
     client: Client,

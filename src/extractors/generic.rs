@@ -6,7 +6,7 @@ use async_trait::async_trait;
 use reqwest::header::{HeaderMap, HeaderValue, USER_AGENT};
 use reqwest::Client;
 
-#[derive(Default)]
+#[derive(Default, Debug, Clone, Copy)]
 pub struct GenericExtractor;
 
 #[async_trait]

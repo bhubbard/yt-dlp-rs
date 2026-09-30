@@ -7,7 +7,7 @@ use reqwest::header::{HeaderMap, HeaderValue, USER_AGENT};
 use reqwest::Client;
 use serde_json::Value;
 
-#[derive(Default)]
+#[derive(Default, Debug, Clone, Copy)]
 pub struct TwitterExtractor;
 
 #[async_trait]

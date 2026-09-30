@@ -9,12 +9,13 @@ use reqwest::Client;
 use std::sync::Arc;
 
 #[async_trait]
-pub trait Extractor: Send + Sync {
+pub trait Extractor: Send + Sync + std::fmt::Debug {
     fn id(&self) -> &'static str;
     fn suitable(&self, url: &str) -> bool;
     async fn extract(&self, url: &str, client: &Client) -> Result<MediaMetadata>;
 }
 
+#[derive(Debug)]
 pub struct ExtractorRegistry {
     extractors: Vec<Arc<dyn Extractor>>,
     fallback: Arc<dyn Extractor>,
